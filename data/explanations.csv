@@ -1,0 +1,153 @@
+problem_name,explanation
+Two Sum,Brute force O(n^2) is a nested for loop. Slightly better is sorting the list and using 2 pointer (O(nlog(n))). Best is using a separate list tracking complements, O(n) space and O(n) time. If already sorted, use 2 pointers for O(1) space O(n) time.
+Add Two Numbers,Iterate through both linked lists with two temps. While one list has a node still, keep adding nodes to res (initialized as dummy), keeping in mind of carry. Return res.next
+Longest Substring Without Repeating Characters,"Have a set for seen characters, iterate through string until get to a character already in seen, then remove chars from seen starting from 0 until we remove character
+(we can index sets in python and they are ordered). Continue loop, updating res to be max of seen every iteration."
+Median of Two Sorted Arrays,"Wrong brute force O((n+m)log(n+m)) solution is to merge both arrays (add them together) and then sort, finding median that way. The correct O(log(n+m)) solution is to do binary search
+over the 2 arrays by partitioning them. Take the middle index of the smaller one, finding the appropriate partition index for the bigger by subtracting smaller partition and 2 (zero-indexed) from half the bigger
+array size. Do this in a while loop, updating left and right vals for both arrays until arr1 left is smaller than arr2 right and arr2 left is smaller than arr1 right."
+Longest Palindromic Substring,"Loop through string and at each char, check the max palindromic substring (i,i) index versus (i, i+1) via an expand out helper function (key=len). Keep updating res to be max of res, and the
+two possible palindromic subtrings. We check (i, i) and (i, i+1) for cases like aba and abba respectively."
+Zigzag Conversion,"Create a list of all the rows (2d array) and when going through the string, add each character to the respective row, reversing when necessary. Then go through each row 1 by 1 for final returned string."
+Reverse Integer,"Convert given int to string. Check if we are dealing with positive or negative case, update our string for negative case to be one less (exclude - sign). If n is greater than 10 we are passed our integer
+range [-2,147,483,648,  2,147,483,647] so return 0. If n = 10 we need to check if the reversed int would be out of that range. Return based on case (*1 verus *-1), use splicing to reverse string[::-1] cast to int."
+String to Integer (atoi),"Crap problem but essentially implement from spec. First move index passed/ignore whitespace. Then check sign case, looking out for weird plus minus cases. Then go through checking chars
+until we go passed our boundary or run into a character. Returning based on positive versus negative case."
+Palindrome Number,"If negative, not palindrome. Go through int, adding each digit to list, then check if palindrome from that list. (don't have to do even or odd cases just start from 0 and n-1, moving to n//2)."
+Regular Expression Matching,"Use @cache to cache results, have 2 pointers moving forward for both pattern and string. If both reach end return True, if the pattern ends without the string return False. If char match move
+forward (only if next char isn't asterisk, in which we check both cases of what the asterisk can do returning whether one will work)."
+Container With Most Water,"Use 2 pointers, checking area each time, then we move left or right depending on which is smaller, as the minimum height is the bottleneck anyways. In other words, the only way we can get a
+larger area (since we are decreasing width) is by having the smaller side be larger."
+Integer to Roman,"Kind of bad problem. But all you do is start from the highest value (1000) and see how many you can fit in, then keep working down pretty much, some nuance (checking edge cases of like CM, CL, IX, etc.)"
+Roman to Integer,"Easy, just go through string add corresponding vals."
+Longest Common Prefix,"Sort array of strings, then iterate for length of smallest string (arr[0]) and check how many chars connect with last string in sorted array."
+3Sum,"Sort so we can use 2 pointers. Iterate through the array and do 2 pointers on the inside, make sure that the first i iterating variable doesn't include duplicates by skipping repeat nums[i] (this still allows for
+mutliple same values from the first instace obv btw). When we do find an answer, continue indexing (choose left or right to move does not matter, skipp duplicates here too)"
+3Sum Closest,"Sort so we can use 2 pointers. Iterate through array and do 2 pointers on the inside, don't need to worry about duplicates tho."
+Letter Combinations of a Phone Number,"Create a digit map to use, then implement recursive backtracking (stopping when the current/soFar = length of string). Go through each digit of the given string via list casting..."
+4Sum,"Sort list. Do a nested for loop then 2 pointers on the inside. Make sure for i and j loop variables to skip duplicate values.
+Then when we do find a value, skip all same values of either l or r."
+Remove Nth Node From End of List, "Create a temp variable and after n moves forward from the given list, create another temp listnode pointer. Then when that first temp pointer reaches the end, the second points to
+the nth node from the end of the linked list. Make sure that if that first variable turns out to be null, just return head."
+Valid Parentheses,"Use a stack (keep adding each valid type of parentheses), checking and removing that the closing matches the one on top of stack, and ensure it is empty when after iterating through the whole string"
+Merge Two Sorted Lists,"Create dummy list where we return its next pointer. Then while list1 or list2 are not empty, add the node that is smaller (then progress only that pointer)."
+Generate Parentheses,"Recursion, we track the soFar string, the number of closed, and the number of unclosed parentheses. Check the soFar if equal to 2 * n, then solution, otherwise add remaining closing parentheses
+if only those left, then finally otherwise add an opening parentheses and check if closing can be added."
+Merge k Sorted Lists,"Create helper function to sort 2 linked lists, then while the number of lists is more than 1 (first create a temp list for the merges), iterate over the number of lists (incrementing by two
+since merging) and use helper function. Add each merged list to temp then after set lists to temp to repeat process. Return lists[0] at end."
+Swap Nodes in Pairs,"Use recursion, reverse every 2 pair of nodes. Pretty self-explanatory, use head, prev, and temp vars."
+Reverse Nodes in k-Group,"Iterate through the linkedlist, checking if the next k can be reversed at each point. Then using a helper function, implement the reverse k logic. Similar to reversing a linked list,
+but finite for loop instead of while loop. The reverse algorithm is a bit annoying the understand, it's easier to draw it on paper, we need prev, cur, temp alongside arg head."
+Remove Duplicates from Sorted Array,"Just iterate through and check the next element if able to see if the same, increment count if so."
+Remove Element,"Must be in-place so no extra array. We use a really complicated algorithm, essentially we loop through the array and for each element that isn't the value, we place it at the appropriate next
+place, keeping track through a count variable that increases for each non val element."
+Find the index of the First Occurrence in a String,"Just loop through the haystack until you find the character of the first character of needle, then check if that starts the full word. If not,
+continue through original loop."
+Next Permutation,"Just reverse if string length <= 2. Then we check for a pivot spot by going from n-2 n-1 to 0 and 1 indices in array seeing if the left index element is greater. If no pivot found, just
+reverse s. Otherwise, go back through that backwards iteration until first value greater than the pivot element, we swap that, then reverse the rest of the s (tech)."
+Longest Valid Parentheses,"Use stack keeping track of indices for open parentheses. Start stack with -1 to account for case that the longest starts at begginning. For every open parentheses,
+append the index, otherwise pop the stack, if the stack is empty reintialize with index (just like -1 case, we need it for size), otherwise calculate length, comparing to 
+res with max."
+Search in Rotated Sorted Array,"Just do regular binary search but for each case when the middle value is not target, we have to check which side is sorted correctly (not rotated), implementing the correct
+logic for each case then."
+Find First and Last Position of Element in Sorted Array,"Binary search to find the val. Then adjust left and right pointers."
+Search Insert Position,"literally just binary search. Remember for binary search the while conditional is l <= r (l==r is valid index)"
+Valid Sudoku,"Keep track of columns, rows, and boxes (boxes can be identified as (row // 3, col // 3))."
+Count and Say,"Follow spec using helper functions."
+Combination Sum,"Recursive backtracking where we use the current index (append to soFar), call backtrack again, pop it, then call backtrack with the next index (don't need to pop after since not adding to soFar)."
+Combination Sum II,"Sort first then when we for each value, count the number of repeats, calling helper with each count of that value."
+First Missing Positive,"Very specific algorithm to solve with O(1) space and in O(n) time. Go through each num in the array, then while each val at nums[i] is positive but less than or equal to n, place it at the
+index one less than its val. Now look for the first missing positive number (nums[i] != i+1). If all vals in the array are positive, return n+1."
+Trapping Rain Water,"Keep track of res (total area) and the left and right max heights. Use two pointers, while l < r, check which is smaller lmax or rmax and then use that one to compute the next area tick
+(incrementing l and using lmax if lmax is smaller and vice versa )."
+Multiply Strings,"Use dictionary to map each char num to its int value, then go through each char in each value to get the ints (then multiply and cast to string). Keep track of 10s power."
+Jump Game II,"Keep track of jumps, position, and furthest we can go. Then iterate to n - 2 since n-1 is complete (don't need to check). If i == position, a jump must have been made, so we
+move to the furthest spot. That doesn't necessarily mean that we are following the jumps (weird ik), but like on the next position we see where we could've gone (furthest) which could
+have been from a different jump spot."
+Permutations,"Distinct integers so we can just go through each and see if not in soFar, doing backtracking on that, popping afterward."
+Permutations II,"Not distinct integers so we keep track of the counts in a hashmap. This way we don't get duplicates as well. Decrement for a use, then increment when popping."
+Rotate Image,"To rotate an image 90 degrees clockwise we need to transpose and then reverse rows"
+Group Anagrams,"Just go through each word, sort that word and add it to the sorted words group in a hashmap. Afterwards, for each group in the hashmap, just go through adding the words in list groups for res."
+Pow(x n),"Can't do in O(n) time (too slow) via multiplying over and over again. Need O(log(n)) time. So, we need recursion, essentially check for base cases then split into x^x/2 via calling recursively on x
+and n//2. Multiply this result with itself without anymore calls (this is why logn) to get x^n, then check if odd (in that case, multiply once more)."
+Maximum Subarray,"Keep track of the current sum and keep adding values to it, if it ever becomes negative reset it, otherwise keep checking max(res, cur)."
+Spiral Matrix,"Just keep track of each bound (left, right, up, down)."
+Jump Game,"Keep track of jumps, position, and furthest we can go. Then iterate to n - 2 since n-1 is complete (don't need to check). If i == position, a jump must have been made, so we
+move to the furthest spot. That doesn't necessarily mean that we are following the jumps (weird ik), but like on the next position we see where we could've gone (furthest) which could
+have been from a different jump spot. At end, return whether position >= n - 1"
+Merge Intervals,"Sort array (it sorts by start), then go through each interval seeing if the next can be combined, if so update the next interval, otherwise just add cur to res."
+Length of Last Word,"Start from back of string skipping spaces, then count number of characters until space or index -1."
+Spiral Matrix II,"Literally same as before, just keep track of each bound."
+Unique Paths,"Use cache to store positions memoization. Keep track of i and j indices and return helper(i+1,j) + helper(i, j+1) when not out of bounds ofc."
+Unique Paths II,"Use cache to store positions memoization. Keep track of i and j indices and avoid obstacles."
+Minimum Path Sum,"Use tabulation to avoid too many recursive calls from memoization. First fill the first column and first row. Then using min and the fact that we can only move down or right fill in
+the inner circle. Return dp[n-1][m-1]"
+Plus One,"Start from back and continually check if we have digit 9, convert to zero if so. When loop for checking 9 ends see if our index is -1, if so, do [1] + digits, otherwise increment digits[i] 1."
+Climbing Stairs,"Very simple memoization example."
+Merge Sorted Array,"We must modify nums1 in place in O(m+n) time. We iterate over m + n, if nums2 pointer is out of bounds we are done. Else if our left nums1 value is not a zero outside the first m and
+is smaller than nums2, increment l. Otherwise, r is smaller and we need to increment both l and r, reverse the last bits of the array twice after setting the left value to the end, while incrementing a
+count which is used for the previous conditional (as if right val is bigger, we move m to m+1 essentially)."
+Binary Tree Inorder Traversal,"Inorder is left, val, right."
+Unique Binary Search Trees,"Tabulation, 0 and 1 cases are base. We multiply left subtree amount by right subtree amount (combination). I.e., we go through each val we can have a root, where we compute the
+total unique BST's as num of unique subtrees on left and right.  numTrees[3] == (numTrees[0] * numTrees[2])(1 as root) + (numTrees[1] * numTrees[1])(2 as root) + numTrees[2] * numTrees[0] (3 as root)"
+Validate Binary Search Tree,"We have to keep track of the highest and lowest values for each node as well (initially start at -inf and inf)."
+Same Tree,"Use a stack or recursion. For the stack (dfs) approach start with both heads checking via popping for a while loop while stack, then append the left and right, checking cases too"
+Binary Tree Level Order Traversal,"For level order searches we need a queue (bfs)."
+Maximum Depth of Binary Tree,"simple recursion"
+Binary Tree Level Order Traversal II,"Just proceed how you would but reverse the result, easy. Remember level order is much easier iteratively unlike pre,in, and postorder, since using queue."
+Convert Sorted Array to Binary Search Tree,"We can easily convert a sorted array to BST using recursion and the binary search algorithm for left and right nodes"
+Valid Palindrome,"Use .isalnum() function and .lower()"
+Clone Graph,"Use a hashmap to keep track of node copies, then go through this given creating copies if not in hashmap for neighbors via recursion, otherwise just adding from hashmap"
+Reverse Words in a String,"String not mutable in python, so we just use extra space via temp array going in backwards order and reversing each word"
+Two Sum II - Input Array is Sorted,"Literally just use two pointers since sorted"
+Majority Element,"To do this in O(n) time but with O(1) space we need to leverage the fact that the element appears more than n/2 times. Therefore, just use a count and candidate system.
+Returning the candidate at the end of array."
+Happy Number,"We need to use a set to ensure no infinite loop. Then just go through the spec, once we get to cur_val == 1, return True"
+Reverse Linked List,"Much easier if we draw it out, this is an annoying algorithm since we need prev, cur, and temp variables. Prev starts at None, cur at head, we continue while cur. Return prev."
+Majority Element II,"We use 2 counts and 2 candidates. But we also have to verify them at the end. We know we can't have more than 2 candidates since we want elements that appear more than n/3 times."
+Sliding Window Maximum,"We need a queue so that we remove all lesser ending elements than the current. Ensure the leftmost is within our window bounds, and keep updating res once i gets far enough"
+Perfect Squares,"Clear cut tabulation. For each val we have default case of i 1s. We can check whether we can do better by using min of that, and dp[i - j*j] +1 for each j*j <= i"
+Number of Segments in a String,"Just keep track of space variable..."
+Network Delay Time,"Minheap dijkstras algorithm. Need to first create edges hash map first. Track seen. Only return if len(seen) == n."
+K closest Points to Origin,"Minheap or sort on distance. Heapify is O(n) and results in klogn + n rather than sortings k + nlogn"
+Squares of a Sorted Array,"To avoid sorting after computing squares, there is an extremely cool solution. Use two pointers but backwards, append a value if its abs(l) >= abs(r), then move pointers
+accordingly. Then our res will actually be in reverse order, so return reversed res."
+Average Waiting Time,"Keep track of summ by going through all customers and considering extra time spent when adding to summ. Return summ/ len(customers)."
+Find Center of Star Graph,"Just return each case from spec"
+Count Nodes Equal to Average of Subtree,"Use dfs to count leftSum,leftCount and rightSum, rightCount to compute the total sum and total count of nodes, updating res if mean is equal to node val"
+First Letter to Appear Twice,"Don't need set because only considering 26 chars (the alphabet)"
+Jewels and Stones,"Must use set to make O(n+m) instead of O(nm)"
+Path Sum,"Use recursive approach keeping track of the curVal"
+Path Sum II,"Use recursive approach keeping track of the curVal and the path"
+Wildcard Matching,"Use cache via (@cache) and pointers pointing to string and pattern. If both end return true. If pattern only finishes or the string
+pointer is passed finishing (> n) return false. Then handle '?' and '*' cases with recursive calls."
+Kth Largest Element in an Array,"To do this without sorting, we need to use heap"
+Convert Sorted List to Binary Search Tree,"Just make a temp array, putting all nodes in that. It will be sorted, then convert that to BST much easier."
+Divide Two Integers,"Use bit shifting. First sort the out of bound cases, then determine if positive or negative. Using absolute values for ease, while dividen - divisor >=0 (i.e divisor
+can go into dividen). Within larger while loop add another while loop that continues multiplying a temp divisor by 2 through <<= 1 [2^1] bit manipulation. This solution is O(log(n))
+compared to slow O(n) of manually subtracting."
+Substring with Concatenation of All Words,"All words have same length, we could brute force this with O(n!) by calculating permutations. But instead we need O(nm) from using counter
+and sliding window. We iterate over the shared word length, making a temp counter to compare with the counter for all words, if the given word of the iteration is in the wordcounter,
+icnrement its spot in temp counter by one, making sure to also decrement it if its passed its supposed count. If our window pointer r and l have length equal to the total expected
+size, append l index, if word isn't in word counter, clear temp counter."
+Sudoku Solver,"Track rows, cols, and boxes. Initially populate them with board values. Then perform backtracking where the backtrack function goes over empty_cels (cells with '.'), checking if
+a char isValid then if so, calls backTrack and continues if that backTrack doesn't return True. Make sure to have a counter that dictates whether to end early (Based on num of
+empty spots, which was calculated when initializing rows,cols,boxes). Also can optimize by sorting empty_cels by number of valid options, doing the ones with less first."
+N-Queens,"For a solution, we need a queen in each row and each column. Let's use rows. We already can easily see the results for boards n=1-3. Otherwise, we will append
+a solution to res if n==rowcount. Otherwise, for each column for our given row, check the different columns it can be in. Note we don't have to track that much actually,
+for our temp, let it be the current rows, where each index tells which column the queen is in, since we know it must be in one. Last thing, we need a helper function
+formatting result."
+N-Queens II,"For a solution, we need a queen in each row and each column. Let's use rows. We already can easily see the results for boards n=1-3. Otherwise, we will append
+a solution to res if n==rowcount. Otherwise, for each column for our given row, check the different columns it can be in. Note we don't have to track that much actually,
+for our temp, let it be the current rows, where each index tells which column the queen is in, since we know it must be in one."
+Insert Interval,"DO NOT HAVE TO SORT. We can get O(n) time by since intervals is already sorted. So go through intervals finding the position newInterval should be in (sort
+by start), then append. If the length of interval is the same as start, then the newInterval needs to be last (whether from empty interval or it has largest start), then
+implement the merge interval algorithm from prob 56 merge interval: (it sorts by start), so go through each interval seeing if the next can be combined, if so update
+the next interval, otherwise just add cur to res."
+Rotate List, "First standardize/normalize/get k to be right. Find the length of the linked list, the have k be k % length. Now continue with 3 nodes, one thats
+k units ahead of temp2 and k+1 ahead of temp3. Continue by lloking at pattern..."
+Permutation Sequence,"Brute force solution is O(n!) if we just compute all permutations up to k, then return that kth perm. O(n) solution relies on a pattern where we know how permutations are split 
+1 + (permutations of 2, 3, 4) ... 2 +... for say n=4. Then with a precomputed factorial list of the factorials, we can have index = k // factorial[n - i], res.append(str(numbers[index])),
+numbers.pop(index), k -= index * factorial[n - i] to find our values 1-n from numbers."
+Add Binary,"Annoying, just get all conditionals, go from back to front of smaller string first. Then do the larger. Append results to res. Then reverse via returning res[::-1]."
+Simplify Path,"Kinda long and annoying. Use stack to track directories for the prev directory operator, ignore current directory operator, use conditionals for everything else and string logic"
