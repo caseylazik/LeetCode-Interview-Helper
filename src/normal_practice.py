@@ -173,7 +173,8 @@ def problem_chooser():
     print()
 
     if (checkResponse(explanation)):
-        read_explanations(chosen['name'])
+        explanation = read_explanations( BASE_DIR / "data" / "explanations.csv",chosen['name'])
+        print(explanation)
         print()
 
     runItBack = input('Do you want to do another problem?(y/yes)')

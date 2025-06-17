@@ -1,6 +1,6 @@
 # LeetCode/Interview-Preparation-Kit
 
-Too for selecting good problems for interview preparation (both technical and behavioral).
+For selecting problems for interview preparation (both technical and behavioral) with their explanations.
 
 # How to run the code
 

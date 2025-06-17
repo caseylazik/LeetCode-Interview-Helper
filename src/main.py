@@ -42,11 +42,6 @@ def main():
     else:
         print("Invalid choice. Exiting.")
 
-    # Potential TODOs:
-
-    # Improve interface
-    # Behavioral questions!
-
 
 if __name__ == '__main__':
     main()

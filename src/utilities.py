@@ -22,16 +22,13 @@ def read_problems(file_path, completed_probs):
 
 
 # Read problem explanations
-def read_explanations(probName):
-    file_path = os.path.join('data', 'explanations.csv')
-
+def read_explanations(file_path, prob_name):
     with open(file_path, newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            name = row['problem_name']
-            if name == probName:
-                print(row['explanation'])
-                return
+            if row['problem_name'] == prob_name:
+                return row['explanation']
+    return None
 
 
 # Check yes or no response
