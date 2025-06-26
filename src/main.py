@@ -14,7 +14,7 @@ def main():
     problems_path = BASE_DIR / "data" / "problems.csv"
     explanations_path = BASE_DIR / "data" / "explanations.csv"
 
-    # Check for needed files
+    # Check for needed files.
     if not problems_path.exists() or not explanations_path.exists():
         print("Error: Missing required data files!")
         print(f"Expected files:\n  - {problems_path}\n  - {explanations_path}")
