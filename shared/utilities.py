@@ -7,7 +7,7 @@ import csv
 import threading
 
 
-# Read problem data.
+# Read problem data
 def read_problems(file_path, completed_probs):
     problems = []
     with open(file_path, newline='', encoding='utf-8') as csvfile:
