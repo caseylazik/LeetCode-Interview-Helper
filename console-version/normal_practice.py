@@ -1,5 +1,5 @@
 from pathlib import Path
-from utilities import checkResponse, read_explanations, read_problems
+from shared.utilities import checkResponse, read_explanations, read_problems
 import random
 import time
 
@@ -173,7 +173,8 @@ def problem_chooser():
     print()
 
     if (checkResponse(explanation)):
-        explanation = read_explanations( BASE_DIR / "data" / "explanations.csv",chosen['name'])
+        explanation = read_explanations(BASE_DIR / "data" / "explanations.csv",
+                                        chosen['name'])
         print(explanation)
         print()
 

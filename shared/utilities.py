@@ -1,5 +1,9 @@
+'''
+Shared Utility functions for both web and console version
+
+'''
+
 import csv
-import os
 import threading
 
 

@@ -2,7 +2,8 @@ import csv
 from pathlib import Path
 import random
 import time
-from utilities import read_explanations, checkResponse, get_input_with_timeout
+from shared.utilities import (read_explanations, checkResponse,
+                              get_input_with_timeout)
 
 
 # Adjust problem difficulty distribution
@@ -68,9 +69,10 @@ def behavioral_questions():
     print("We are now going to move to some behavioral questions. \n")
 
     num_questions = random.randint(2, 4)
-     
+
     problems = []
-    with open(Path(__file__).resolve().parent.parent / "data" / "behavioral.csv",
+    with open(Path(__file__).resolve().parent.parent / "data" /
+              "behavioral.csv",
               newline='', encoding='utf-8') as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
@@ -78,7 +80,7 @@ def behavioral_questions():
                 'question': row['question'],
                 'guideline': row['guideline'],
             }
-            
+
             problems.append(problem)
     problems = random.sample(problems, num_questions)
     for i in range(num_questions):
@@ -142,5 +144,5 @@ def mock_interview(problems):
         for name, _ in attempted:
             print(f"\nExplanation for {name}:")
             read_explanations(name)
-    
+
     behavioral_questions()

@@ -1,8 +1,8 @@
-from utilities import read_problems
+from shared.utilities import read_problems
 from pathlib import Path
 
-from mock_interview import mock_interview
-from normal_practice import problem_chooser
+from .mock_interview import mock_interview
+from .normal_practice import problem_chooser
 
 
 # Main program

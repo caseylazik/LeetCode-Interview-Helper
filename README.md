@@ -2,8 +2,18 @@
 
 For selecting problems for interview preparation (both technical and behavioral) with their explanations.
 
-# How to run the code
+## Run the command-line app
 
-Download the repository and then download the required packages from the requirements.txt file.
+Run `python -m console.main` from the repository root. This is because we treat as module such that we can use relative import (.) syntax for import. This allows shared to work for both console and web version.
 
-Run main.py file to run the code in terminal or run app.py file to run the code in the browser with a nice UI webpage.
+
+## Run the browser app
+
+
+First Implemented flask server backend
+
+Then implemented fastAPIBackend
+
+
+
+Frontend to use TypeScript React,
